@@ -62,7 +62,8 @@ sortBy(Comparator, List) ->
 
 comparator(X, Y) when X < Y -> less;
 comparator(X, Y) when X > Y -> greater;
-comparator(_, _) -> equal.
+comparator(X, Y) when X == Y -> equal;
+comparator(_, _) -> io:format("Erorr~n").
 
 mergeSort(_, []) -> [];
 mergeSort(_, [X]) -> [X];
@@ -86,6 +87,7 @@ merge([X | Rest1], [Y | Rest2], Comparator) ->
         less -> [X | merge(Rest1, [Y | Rest2], Comparator)];
         _ -> [Y | merge([X | Rest1], Rest2, Comparator)]
     end.
+%lab2:sortBy(fun lab2:comparator/2,[6,5,3,1,8,7,2,4]).
 
 
 
